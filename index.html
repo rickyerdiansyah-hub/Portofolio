@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Ricky Erdiansyah</title>
+    <style>
+        /* === TEMA DARK MODE & RESET === */
+        :root {
+            --bg-main: #070b19;
+            --bg-card: #111827;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --accent-color: #00d2ff;
+            --border-color: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* === NAVIGASI (HEADER) === */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 0;
+            background-color: rgba(7, 11, 25, 0.95);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-family: serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* === STRUKTUR KONTEN TAB === */
+        .tab-content {
+            display: none;
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === TAB 1: HOME (HERO SECTION DENGAN FOTO) === */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Memastikan konten berada di tengah */
+            gap: 50px; /* Jarak antara foto dan teks */
+            min-height: 60vh;
+        }
+
+        /* Styling untuk Gambar Profil */
+        .hero-image {
+            flex-shrink: 0; /* Mencegah gambar menyusut */
+        }
+
+        .profile-img {
+            width: 350px; /* Mengatur lebar gambar agar proporsional */
+            height: auto; /* Tinggi menyesuaikan proporsi aslinya */
+            border-radius: 20px; /* Memberikan efek lengkung pada sudut gambar */
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15); /* Efek bayangan dengan aksen biru */
+            border: 2px solid rgba(0, 210, 255, 0.3); /* Bingkai tipis */
+            object-fit: cover; /* Memastikan gambar memenuhi area tanpa distorsi (berguna jika diset ke bentuk lingkaran nanti) */
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .welcome-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .welcome-badge .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #00b8e6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        /* === TAB 2 & 3: CV & TARGET AUDIENS (KONTEN UMUM) === */
+        .content-container {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .contact-info {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .contact-info strong {
+            color: var(--accent-color);
+        }
+
+        .cv-section {
+            margin-bottom: 30px;
+        }
+
+        .cv-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: inline-block;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .cv-section p, .cv-section ul {
+            color: var(--text-secondary);
+        }
+
+        .cv-section ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .cv-section li {
+            margin-bottom: 10px;
+        }
+
+        .cv-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Grid Target Audiens */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .card h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Responsif */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 3rem; }
+            .welcome-badge { justify-content: center; }
+            .profile-img { width: 250px; } /* Mengecilkan ukuran gambar di layar kecil */
+            .card-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI -->
+    <header>
+        <div class="logo">
+            <span>β</span> RICKY ERDIANSYAH
+        </div>
+        <nav>
+            <ul>
+                <li><a id="nav-home" class="tab-link active" onclick="openTab(event, 'Home')">HOME</a></li>
+                <li><a id="nav-cv" class="tab-link" onclick="openTab(event, 'CV')">CURRICULUM VITAE</a></li>
+                <li><a id="nav-target" class="tab-link" onclick="openTab(event, 'TargetAudience')">TARGET AUDIENS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- TAB 1: HOME (HERO) -->
+    <div id="Home" class="tab-content active">
+        <div class="hero">
+            <!-- Bagian Gambar Profil (Kiri) -->
+            <div class="hero-image">
+                <!-- GANTI "foto-saya.jpg" dengan nama file foto Anda -->
+                <img src="Ricky Erdiansyah.jpg" alt="Foto Ricky Erdiansyah" class="profile-img">
+            </div>
+            
+            <!-- Bagian Teks (Kanan) -->
+            <div class="hero-text">
+                <div class="welcome-badge">
+                    <span class="dot"></span> Welcome to my portfolio
+                </div>
+                <h1>Hi, I'm Ricky<br>Erdiansyah</h1>
+                <h2>NETWORK ENGINEER | IT INFRASTRUCTURE</h2>
+                <p>
+                    Saya adalah mahasiswa S1 Sistem Komputer di ITB STIKOM Bali yang antusias dalam membangun 
+                    solusi infrastruktur jaringan yang efisien. Memiliki fokus kuat pada sistem MikroTik, optimasi 
+                    lalu lintas data, dan manajemen operasional IT berskala <strong>Enterprise</strong>.
+                </p>
+                <button class="btn-primary" onclick="goToCV()">
+                    Lihat CV Saya ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: CURRICULUM VITAE -->
+    <div id="CV" class="tab-content">
+        <div class="content-container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="contact-info">
+                <strong>Domisili:</strong> Denpasar, Bali | <strong>Email:</strong> erdiricky@gmail.com | <strong>Telepon:</strong> +62 812-3711-4148
+            </div>
+
+            <div class="cv-section">
+                <h3>Pendidikan</h3>
+                <p><strong>ITB STIKOM BALI</strong> — S1 Sistem Komputer (2023 - Sekarang)</p>
+                <p>Mata Kuliah Relevan: Jaringan Komputer, Keamanan Sistem, Administrasi Jaringan, Arsitektur Komputer.</p>
+            </div>
+
+            <div class="cv-section">
+                <h3>Sertifikasi & Pelatihan Terstandarisasi</h3>
+                <ul>
+                    <li><strong>Sertifikat Kompetensi Kerja — Junior Network Administrator</strong> (BNSP / Kemenaker RI - 2022)</li>
+                    <li><strong>Pelatihan Berbasis Kompetensi (520 JP) — Teknisi Jaringan Komputer</strong> (BLK Kab. Banyuwangi - 2022) <br> Fokus Administrasi MikroTik RouterOS, Manajemen Bandwidth, Network Security, dan RADIUS Management.</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h3>Proyek & Praktikum Akademik</h3>
+                <ul>
+                    <li><strong>Implementation of Secure Hotspot Authentication</strong> Merancang sistem autentikasi Wi-Fi terpusat menggunakan MikroTik dan User Manager, serta menerapkan Firewall Rules untuk keamanan akses.</li>
+                    <li><strong>Enterprise LAN Topology Design</strong> Merancang topologi jaringan inter-departemen menggunakan implementasi VLAN, Routing (Static/Dynamic), serta manajemen Quality of Service (QoS).</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h3>Keahlian Teknikal Utama</h3>
+                <p><strong>Infrastruktur</strong> MikroTik RouterOS, Cisco Devices, UTP & Fiber Optic (Splicing/Crimping).</p>
+                <p><strong>Arsitektur Jaringan</strong> TCP/IP, VLAN, Subnetting, Routing, DHCP, DNS, Network Monitoring.</p>
+                <p><strong>Keamanan & Trafik</strong> Firewall Rules (NAT/Filter), Hotspot Auth, Bandwidth Management (Queue Tree).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TARGET AUDIENS -->
+    <div id="TargetAudience" class="tab-content">
+        <div class="content-container">
+            <h2 class="section-title" style="margin-bottom: 20px;">Target Audiens Profesi Saya</h2>
+            <p style="text-align: center; color: var(--text-secondary);">Siapa saja yang membutuhkan profesi saya di bidang <em>Network Engineering</em> dan mengapa keahlian ini krusial bagi bisnis mereka.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🏢 Perusahaan IT Skala Multinasional</h4>
+                    <p>Membutuhkan desain arsitektur jaringan berstandar global, routing antar cabang yang efisien, dan VPN yang aman untuk memastikan komunikasi bisnis berjalan 24/7 tanpa <em>downtime</em>.</p>
+                </div>
+                <div class="card">
+                    <h4>🌐 Internet Service Provider (ISP) & Data Center</h4>
+                    <p>Membutuhkan manajemen distribusi <em>bandwidth</em> (QoS), pemeliharaan infrastruktur fisik (Fiber Optic/Wireless), serta optimasi latensi demi menjaga kepuasan klien dan stabilitas koneksi.</p>
+                </div>
+                <div class="card">
+                    <h4>🏥 Rumah Sakit & Instansi Publik</h4>
+                    <p>Memerlukan segmentasi jaringan (VLAN) untuk memisahkan akses publik dan sistem rekam medis internal, serta implementasi <strong>Firewall</strong> ketat untuk melindungi kerahasiaan data pasien.</p>
+                </div>
+                <div class="card">
+                    <h4>🏦 Sektor Perbankan & Finansial</h4>
+                    <p>Fokus pada keamanan siber dan <strong>High Availability</strong>. Membutuhkan <strong>Network Monitoring</strong> aktif untuk mendeteksi anomali trafik serta sistem <strong>failover</strong> otomatis jika terjadi gangguan pada server utama.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function openTab(evt, tabName) {
+            let tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+                tabContents[i].classList.remove("active");
+            }
+
+            let tabLinks = document.getElementsByClassName("tab-link");
+            for (let i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(() => {
+                document.getElementById(tabName).classList.add("active");
+            }, 10);
+            
+            if (evt) {
+                evt.currentTarget.classList.add("active");
+            }
+        }
+
+        function goToCV() {
+            document.getElementById('nav-cv').click();
+        }
+    </script>
+</body>
+</html>
