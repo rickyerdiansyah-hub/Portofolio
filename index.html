@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Ricky Erdiansyah</title>
     <style>
-        /* === TEMA DARK MODE & RESET === */
         :root {
             --bg-main: #070b19;
             --bg-card: #111827;
@@ -29,7 +28,6 @@
             min-height: 100vh;
         }
 
-        /* === NAVIGASI (HEADER) === */
         header {
             display: flex;
             justify-content: space-between;
@@ -80,7 +78,6 @@
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* === STRUKTUR KONTEN TAB === */
         .tab-content {
             display: none;
             padding: 60px 50px;
@@ -98,27 +95,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* === TAB 1: HOME (HERO SECTION DENGAN FOTO) === */
         .hero {
             display: flex;
             align-items: center;
-            justify-content: center; /* Memastikan konten berada di tengah */
-            gap: 50px; /* Jarak antara foto dan teks */
+            justify-content: center;
+            gap: 50px;
             min-height: 60vh;
         }
 
-        /* Styling untuk Gambar Profil */
         .hero-image {
-            flex-shrink: 0; /* Mencegah gambar menyusut */
+            flex-shrink: 0;
         }
 
         .profile-img {
-            width: 350px; /* Mengatur lebar gambar agar proporsional */
-            height: auto; /* Tinggi menyesuaikan proporsi aslinya */
-            border-radius: 20px; /* Memberikan efek lengkung pada sudut gambar */
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15); /* Efek bayangan dengan aksen biru */
-            border: 2px solid rgba(0, 210, 255, 0.3); /* Bingkai tipis */
-            object-fit: cover; /* Memastikan gambar memenuhi area tanpa distorsi (berguna jika diset ke bentuk lingkaran nanti) */
+            width: 350px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+            border: 2px solid rgba(0, 210, 255, 0.3);
+            object-fit: cover;
         }
 
         .hero-text {
@@ -183,7 +178,6 @@
             box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
         }
 
-        /* === TAB 2 & 3: CV & TARGET AUDIENS (KONTEN UMUM) === */
         .content-container {
             background-color: var(--bg-card);
             padding: 40px;
@@ -240,7 +234,6 @@
             color: var(--text-primary);
         }
 
-        /* Grid Target Audiens */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -271,12 +264,11 @@
             font-size: 0.95rem;
         }
 
-        /* Responsif */
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; gap: 30px; }
             .hero-text h1 { font-size: 3rem; }
             .welcome-badge { justify-content: center; }
-            .profile-img { width: 250px; } /* Mengecilkan ukuran gambar di layar kecil */
+            .profile-img { width: 250px; }
             .card-grid { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 20px; }
         }
@@ -284,7 +276,6 @@
 </head>
 <body>
 
-    <!-- NAVIGASI -->
     <header>
         <div class="logo">
             <span>β</span> RICKY ERDIANSYAH
@@ -298,16 +289,12 @@
         </nav>
     </header>
 
-    <!-- TAB 1: HOME (HERO) -->
     <div id="Home" class="tab-content active">
         <div class="hero">
-            <!-- Bagian Gambar Profil (Kiri) -->
             <div class="hero-image">
-                <!-- GANTI "foto-saya.jpg" dengan nama file foto Anda -->
                 <img src="Ricky Erdiansyah.jpg" alt="Foto Ricky Erdiansyah" class="profile-img">
             </div>
             
-            <!-- Bagian Teks (Kanan) -->
             <div class="hero-text">
                 <div class="welcome-badge">
                     <span class="dot"></span> Welcome to my portfolio
@@ -326,7 +313,6 @@
         </div>
     </div>
 
-    <!-- TAB 2: CURRICULUM VITAE -->
     <div id="CV" class="tab-content">
         <div class="content-container">
             <h2 class="section-title">Curriculum Vitae</h2>
@@ -365,7 +351,6 @@
         </div>
     </div>
 
-    <!-- TAB 3: TARGET AUDIENS -->
     <div id="TargetAudience" class="tab-content">
         <div class="content-container">
             <h2 class="section-title" style="margin-bottom: 20px;">Target Audiens Profesi Saya</h2>
@@ -392,7 +377,6 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
         function openTab(evt, tabName) {
             let tabContents = document.getElementsByClassName("tab-content");
